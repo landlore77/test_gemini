@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <h4>로그인</h4>
+    <div>
+        <div id="g_id_onload"
+             data-client_id="{{ .googleClientID }}"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="onSignIn"
+             data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="outline"
+             data-text="signin_with"
+             data-size="large"
+             data-width="100%"
+             data-logo_alignment="center">
+        </div>
+    </div>
+    <script>
+        function onSignIn(googleUser) {
+            var id_token = googleUser.credential;
+            console.log("ID Token: " + id_token);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>어드민 관리 페이지</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination a {
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            color: blue;
+        }
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h4>어드민 관리 페이지</h4>
+
+    <button onclick="location.href='/register'">생성</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>그룹 ID</th>
+                <th>사용자 이름</th>
+                <th>설명</th>
+                <th>최근 로그인</th>
+                <th>최근 IP</th>
+                <th>작업</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range .Admins }}
+            <tr>
+                <td>{{ .ID }}</td>
+                <td>{{ .GroupID }}</td>
+                <td>{{ .UserName }}</td>
+                <td>{{ .Description }}</td>
+                <td>{{ .FormattedLastLogin }}</td>
+                <td>{{ .LastIP }}</td>
+                <td><button onclick="alert('{{ .UserName }}삭제');">삭제</button></td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        {{ if gt .TotalPages 1 }}
+            {{ if gt .CurrentPage 1 }}
+                <a href="/admin_list?page={{ .PrevPage }}">이전</a>
+            {{ end }}
+            {{ range $i, $e := .Pages }}
+                <a href="/admin_list?page={{ $e }}" class="{{ if eq $e $.CurrentPage }}active{{ end }}">{{ $e }}</a>
+            {{ end }}
+            {{ if lt .CurrentPage .TotalPages }}
+                <a href="/admin_list?page={{ .NextPage }}">다음</a>
+            {{ end }}
+        {{ end }}
+    </div>
+</body>
+</html>

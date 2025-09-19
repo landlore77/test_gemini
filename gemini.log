@@ -1,0 +1,130 @@
+Command: docker pull valkey/valkey:latest
+Directory: (root)
+Output: Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+Error: short-name resolution enforced but cannot prompt without a TTY
+Error: (none)
+Exit Code: 125
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5246
+
+Command: docker pull docker.io/valkey/valkey:latest
+Directory: (root)
+Output: 8c04e462c12008e3f9b974deedbd8252f2825657c58f75483643554f3686a7b1
+Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+Trying to pull docker.io/valkey/valkey:latest...
+Getting image source signatures
+Copying blob sha256:8436a2701eb5f0fd557445c72610aac7235fdff63132e0277a14cbebe25298f3
+Copying blob sha256:a0f7abbb5d7e29fcb2cf77eb28c062a37228ad269e4778e1229af49c1816c88d
+Copying blob sha256:b1badc6e50664185acfaa0ca255d8076061c2a9d881cecaaad281ae11af000ce
+Copying blob sha256:d54706f4dd5194b7f833268d2ac77535ea91367ae5ed828d1a0e605d2d5d8321
+Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+Copying blob sha256:971019e9061c2a1ccc2c27baccf9299f431605d2680fab8badbbe0b6cb83e8f0
+Copying blob sha256:956d16ab2c3628622ef89f6f3b8c48383ba34096276b860022e7545a7f1705df
+Copying config sha256:8c04e462c12008e3f9b974deedbd8252f2825657c58f75483643554f3686a7b1
+Writing manifest to image destination
+Error: (none)
+Exit Code: 0
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5265
+
+Command: docker run --name valkey-test -p 6379:6379 -d docker.io/valkey/valkey:latest
+Directory: (root)
+Output: 24259496bad50da721ba05942297c1e7d1f9054c91bed70a5c71e0cbc4d4f864
+Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+Error: (none)
+Exit Code: 0
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5407
+
+Command: docker pull mongo:latest
+Directory: (root)
+Output: Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+Resolved "mongo" as an alias (/etc/containers/registries.conf.d/001-rhel-shortnames.conf)
+Trying to pull bds-docker-release.jfrog.io/mongo:latest...
+Error: initializing source docker://bds-docker-release.jfrog.io/mongo:latest: reading manifest latest in bds-docker-release.jfrog.io/mongo: unauthorized: The client does not have permission for manifest
+Error: (none)
+Exit Code: 125
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5498
+
+Command: docker pull docker.io/library/mongo:latest
+Directory: (root)
+Output: a542858eb092b9a1940d08a88c4cd4ddd914bd371c3882b4e8696784d14dbfd8
+Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+Trying to pull docker.io/library/mongo:latest...
+Getting image source signatures
+Copying blob sha256:59656346abc5d9043e3da7b4926855003a2493b9186a04bef9c16c41ebb3d719
+Copying blob sha256:24d3684e3e31c4434717436bac0700a1f14af426e0955b6db6be752dc8fc33bb
+Copying blob sha256:1bcda349eff4fe754431a14622c3593d38cfeccb275ee68652d0f8f735798ca3
+Copying blob sha256:85e4b02a45eb40ad4778159be5b8396c20f8be1f6f9f82819535451e3dd81f0f
+Copying blob sha256:275311375b8aeb84da2c5f9b521363906f85276346019535ce1c0d6b63d1d8c7
+Copying blob sha256:953cdd4133718b72c5d0a78e754c1405c02510fdb5237265f7955863f1757f83
+Copying blob sha256:7704f919bba4f42ae2d842832b8c8287b324b35f3ecf9d46bd47542ae397cece
+Copying blob sha256:985e719dc64299f806ef958fbf0ee06f262b547fffc148b00c7bd86a48862d9d
+Copying config sha256:a542858eb092b9a1940d08a88c4cd4ddd914bd371c3882b4e8696784d14dbfd8
+Writing manifest to image destination
+Error: (none)
+Exit Code: 0
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5517
+
+Command: docker run --name mongodb-test -p 27017:27017 -d docker.io/library/mongo:latest
+Directory: (root)
+Output: ccf6307b565c3e14678b560651025c21af8d60bd1212b99107b30d6c67432006
+Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+Error: (none)
+Exit Code: 0
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5720
+
+Command: docker exec mysql-test-admin mysql -u root -ptest1 test_admin -e "
+CREATE TABLE admin_auth (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    group_id INT DEFAULT -1,
+    user_name VARCHAR(64),
+    description VARCHAR(64),
+    password VARCHAR(64),
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_ip VARCHAR(15),
+    last_login INT DEFAULT 0,
+    INDEX (user_name)
+);
+" 
+Directory: (root)
+Output: Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Error: (none)
+Exit Code: 0
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5889
+
+Command: docker exec mysql-test-admin mysql -u root -ptest1 test_admin -e "
+INSERT INTO admin_auth (group_id, user_name, description, password, last_ip, last_login) VALUES
+(-1, 'admin1', 'Administrator User 1', 'pass1', '192.168.1.1', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin2', 'Administrator User 2', 'pass2', '192.168.1.2', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin3', 'Administrator User 3', 'pass3', '192.168.1.3', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin4', 'Administrator User 4', 'pass4', '192.168.1.4', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin5', 'Administrator User 5', 'pass5', '192.168.1.5', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin6', 'Administrator User 6', 'pass6', '192.168.1.6', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin7', 'Administrator User 7', 'pass7', '192.168.1.7', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin8', 'Administrator User 8', 'pass8', '192.168.1.8', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin9', 'Administrator User 9', 'pass9', '192.168.1.9', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin10', 'Administrator User 10', 'pass10', '192.168.1.10', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin11', 'Administrator User 11', 'pass11', '192.168.1.11', UNIX_TIMESTAMP(CURRENT_TIMESTAMP)),
+(-1, 'admin12', 'Administrator User 12', 'pass12', '192.168.1.12', UNIX_TIMESTAMP(CURRENT_TIMESTAMP));
+"
+Directory: (root)
+Output: Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Error: (none)
+Exit Code: 0
+Signal: (none)
+Background PIDs: (none)
+Process Group PGID: 5932
