@@ -23,6 +23,7 @@ var routingData = []Route{
 	{"GET", "/register", request.RegisterPageHandler},
 	{"GET", "/admin_list", adminListHandler},
 	{"POST", "/actions/register", request.RegisterActionHandler},
+	{"POST", "/actions/login", request.LoginActionHandler},
 }
 
 func GetRoutes() []Route {
