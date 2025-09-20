@@ -1,2 +1,4 @@
 go/
 go1.24.7.linux-amd64.tar.gz
+main
+app_output.log

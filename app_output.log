@@ -1,13 +1,13 @@
-2025/09/20 12:16:42 Main function started.
-2025/09/20 12:16:42 Loading configuration...
-2025/09/20 12:16:42 Config file opened successfully.
-2025/09/20 12:16:42 Configuration loaded successfully.
-2025/09/20 12:16:42 Config loaded.
-2025/09/20 12:16:42 Echo instance created.
-2025/09/20 12:16:42 Template renderer initialized.
-2025/09/20 12:16:42 Routes registered.
-2025/09/20 12:16:42 Register action handler registered.
-2025/09/20 12:16:42 Starting server on :8080...
+2025/09/20 16:41:05 Main function started.
+2025/09/20 16:41:05 Loading configuration...
+2025/09/20 16:41:05 Config file opened successfully.
+2025/09/20 16:41:05 Configuration loaded successfully.
+2025/09/20 16:41:05 Config loaded.
+2025/09/20 16:41:05 Echo instance created.
+2025/09/20 16:41:05 Template renderer initialized.
+2025/09/20 16:41:05 Routes registered.
+2025/09/20 16:41:05 Register action handler registered.
+2025/09/20 16:41:05 Starting server on :8080...
 
    ____    __
   / __/___/ /  ___
@@ -18,8 +18,8 @@ https://echo.labstack.com
 ____________________________________O/_______
                                     O\
 ⇨ http server started on [::]:8080
-2025/09/20 12:19:15 Attempting to connect to MySQL with User: test1
-2025/09/20 15:19:44 Attempting to connect to MySQL with User: test1
-2025/09/20 15:47:19 Attempting to connect to MySQL with User: test1
-2025/09/20 15:47:28 Attempting to connect to MySQL with User: test1
-2025/09/20 15:47:30 Attempting to connect to MySQL with User: test1
+2025/09/20 16:42:21 Attempting to connect to MySQL with User: test1
+2025/09/20 16:42:21 Login successful for user: landlore@wemade.com
+2025/09/20 16:42:21 Attempting to connect to MySQL with User: test1
+2025/09/20 16:42:32 Attempting to connect to MySQL with User: test1
+2025/09/20 16:42:32 Login failed for user: landlore@wemade.com, password mismatch

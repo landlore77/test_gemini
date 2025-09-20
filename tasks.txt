@@ -85,3 +85,10 @@ mysql을 사용할때 자주쓰는 헬퍼(open, row 처리 등)를 만들어서 
 main.go 에 보면 e.POST("/actions/register", request.RegisterActionHandler) 가 router에 등록되지 않고 
 따로 떨어져 있는데 이부분을 router에서 처리되도록 수정해줘
 # TASK12 END
+
+# TASK13 START 로그인 페이지 처리
+/login 페이지에 유저네임, 패스워드 입력창과 로그인 버튼을 하나의 div안에 만들어주고, 아래쪽에 버튼 하나를 두어서 토글 (숨겼다, 보였다) 하도록 처리해줘
+로그인 버튼을 누르면 /actions/login 페이지로 가서 db의 user_name, password 값과 비교하여 로그인이 가능하면 /admin_list로 보내주고 아니면 다시 /login 화면에
+alert 창으로 로그인 실패하였습니다 라고 띄워줘
+# TASK13 END
+
