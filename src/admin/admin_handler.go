@@ -1,15 +1,14 @@
 package admin
 
 import (
-	"database/sql"
 	"log"
 	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/labstack/echo/v4"
-	_ "github.com/go-sql-driver/mysql" // MySQL driver
-	"test1/model" // Corrected module name
+	"test1/model"
+	"test1/utils"
 )
 
 const (
@@ -18,9 +17,8 @@ const (
 
 // AdminListHandler handles the /admin_list page
 func AdminListHandler(c echo.Context) error {
-	// TODO: Get database connection from context or global variable
-	// For now, a placeholder connection
-	db, err := sql.Open("mysql", "test1:test1@tcp(127.0.0.1:3306)/test_admin")
+	// Get database connection from a helper function
+	db, err := utils.GetDB()
 	if err != nil {
 		log.Printf("Error opening database connection: %v", err)
 		return c.String(http.StatusInternalServerError, "Error connecting to database")

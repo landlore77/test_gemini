@@ -7,3 +7,5 @@ TASK5: 운영툴에 /admin_list 페이지를 추가 하는데 admin_auth 테이�
 TASK6: admin_auth 테이블 생성 문을 src/sql/test_admin.sql 에 추가해줘. 기존에 생성된 테이블이 있으면 지우도록 하는 구문을 추가해주면 좋겠어 - 완료 시간: 2025-09-19 20:03:15
 TASK7: 운영툴에 /register 페이지의 등록처리 /register 페이지에서 "확인"버튼을 "등록"버튼으로 바꿔주고, 등록버튼을 눌렀을때 /actions/register 페이지에 데이터를 보내서 admin_auth table에 저장하도록 코드 작성해줘 등록버튼을 눌렀을때 입력한 내용을 confirm 창에 보여주고, "이대로 등록하시겠습니까?" 의 메시지와 함께 확인을 눌렀을때 등록하게 해줘 그리고 "이메일" 입력창을 "유저 이름" 입력창으로 바꿔주고, 유저이름에 4자 이하의 값이 등록되었을때 입력창 옆에 "너무 짧습니다"가 표시되도록 처리해줘 db의 group_id = -1, description = "신규유저" 로 들어가도록 해주고, last_ip는 브라우저의 client ip를 얻어서 입력해주면 좋겠어 - 완료 시간: 2025-09-19 20:22:03
 TASK8: 페이지 렌딩 수정 /actions/register 가 호출되서 정상적으로 값이 입력되면 /admin_list 페이지에서 등록사항을 볼 수 있도록 수정해줘 그리고 /admin_list 에서 표시되는 정보는 create_time 기준으로 내림차순 정렬시켜주고, 필요하면 INDEX를 create_time에 추가하고, ./src/sqls/test_admin.sql 의 내용도 수정해줘 - 완료 시간: 2025-09-19 20:27:39
+TASK10: mysql id, pass 처리 리팩토링 (Completed: 2025-09-20 10:59:12)
+TASK11: /admin_list Error fetching admin count 오류 수정 및 애플리케이션 재시작 (Completed: 2025-09-20 11:34:59)

@@ -1,0 +1,22 @@
+2025/09/20 11:33:37 Main function started.
+2025/09/20 11:33:37 Loading configuration...
+2025/09/20 11:33:37 Config file opened successfully.
+2025/09/20 11:33:37 Configuration loaded successfully.
+2025/09/20 11:33:37 Config loaded.
+2025/09/20 11:33:37 Echo instance created.
+2025/09/20 11:33:37 Template renderer initialized.
+2025/09/20 11:33:37 Routes registered.
+2025/09/20 11:33:37 Register action handler registered.
+2025/09/20 11:33:37 Starting server on :8080...
+
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.13.4
+High performance, minimalist Go web framework
+https://echo.labstack.com
+____________________________________O/_______
+                                    O\
+⇨ http server started on [::]:8080
+2025/09/20 11:35:24 Attempting to connect to MySQL with User: test1
+2025/09/20 11:35:27 Attempting to connect to MySQL with User: test1

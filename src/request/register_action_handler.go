@@ -1,13 +1,12 @@
 package request
 
 import (
-	"database/sql"
 	"log"
 	"net/http"
 	"time"
 
+	"test1/utils"
 	"github.com/labstack/echo/v4"
-	_ "github.com/go-sql-driver/mysql" // MySQL driver
 )
 
 // RegisterRequest represents the request body for registration
@@ -28,8 +27,8 @@ func RegisterActionHandler(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, map[string]string{"message": "User name and password cannot be empty"})
 	}
 
-	// TODO: Get database connection from context or global variable
-	db, err := sql.Open("mysql", "test1:test1@tcp(127.0.0.1:3306)/test_admin")
+	// Get database connection from a helper function
+	db, err := utils.GetDB()
 	if err != nil {
 		log.Printf("Error opening database connection: %v", err)
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": "Error connecting to database"})

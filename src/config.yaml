@@ -1,1 +1,4 @@
 GOOGLE_CLIENT_ID: "a google client id"
+MYSQL:
+  ID: "test1"
+  PASS: "test1"

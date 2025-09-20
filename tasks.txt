@@ -64,3 +64,19 @@ db의 group_id = -1, description = "신규유저" 로 들어가도록 해주고,
 /register 에서 값을 넣고 실행을 해보았는데 alert "등록 실패: Method Not Allowed" 가 뜨면서 더이상 실행이 안되는데 해당 코드를 작동하도록 수정해줘
 # TASK9 END
 
+# TASK10 START mysql id, pass 처리
+./src/request/register_action_hanlder.go 에 보면 sql.Open에 직접 id, pass 를 넣는 방식으로 되어있는데 
+config.yaml에 
+MYSQL:
+  ID: "test1"
+  PASS: "test1"
+을 추가해주고, 이걸 읽어서 sql.Open을 수행하는 방식으로 변경해줘.
+
+그리고 sql문을 자주 쓰게 될거 같으니 ./src/utils/mysql_util.go 를 만들어서 
+mysql을 사용할때 자주쓰는 헬퍼(open, row 처리 등)를 만들어서 넣고, 그걸 이용해서 처리하도록 변경해줘
+# TASK10 END
+
+# TASK11 START 작업오류 수정
+작업해서 띄워준 서버의 /admin_list에 접속하였더니 Error fetching admin count 이런 오류가 발생했어.
+정상 작동하도록 수정하고 테스트할 수 있도록 어플리케이션 재시작 시켜줘
+# TASK11 END
