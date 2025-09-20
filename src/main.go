@@ -5,7 +5,6 @@ import (
 	"test1/config"
 	"test1/router"
 	"test1/utils"
-	"test1/request" // New import
 
 	"github.com/labstack/echo/v4"
 )
@@ -25,11 +24,16 @@ func main() {
 	log.Println("Template renderer initialized.")
 
 	for _, route := range router.GetRoutes() {
-		e.GET(route.Path, route.Handler)
+		switch route.Method {
+		case "GET":
+			e.GET(route.Path, route.Handler)
+		case "POST":
+			e.POST(route.Path, route.Handler)
+		// Add other methods as needed
+		}
 	}
 	log.Println("Routes registered.")
-	// Handle POST for /actions/register
-	e.POST("/actions/register", request.RegisterActionHandler)
+	// Removed direct POST registration as it's now handled by router.GetRoutes()
 	log.Println("Register action handler registered.")
 
 	log.Println("Starting server on :8080...")

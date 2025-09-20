@@ -9,6 +9,7 @@ import (
 
 // Route defines a route for the web server
 type Route struct {
+	Method  string
 	Path    string
 	Handler echo.HandlerFunc
 }
@@ -17,11 +18,11 @@ type Route struct {
 var adminListHandler = admin.AdminListHandler // Explicitly use the handler
 
 var routingData = []Route{
-	{"/", request.HelloHandler},
-	{"/login", request.LoginHandler},
-	{"/register", request.RegisterPageHandler},
-	{"/admin_list", adminListHandler},
-	{"/actions/register", request.RegisterActionHandler},
+	{"GET", "/", request.HelloHandler},
+	{"GET", "/login", request.LoginHandler},
+	{"GET", "/register", request.RegisterPageHandler},
+	{"GET", "/admin_list", adminListHandler},
+	{"POST", "/actions/register", request.RegisterActionHandler},
 }
 
 func GetRoutes() []Route {

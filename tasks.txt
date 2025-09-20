@@ -80,3 +80,8 @@ mysql을 사용할때 자주쓰는 헬퍼(open, row 처리 등)를 만들어서 
 작업해서 띄워준 서버의 /admin_list에 접속하였더니 Error fetching admin count 이런 오류가 발생했어.
 정상 작동하도록 수정하고 테스트할 수 있도록 어플리케이션 재시작 시켜줘
 # TASK11 END
+
+# TASK12 START 코드 정리
+main.go 에 보면 e.POST("/actions/register", request.RegisterActionHandler) 가 router에 등록되지 않고 
+따로 떨어져 있는데 이부분을 router에서 처리되도록 수정해줘
+# TASK12 END
