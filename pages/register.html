@@ -2,18 +2,41 @@
 <html>
 <head>
     <title>운영자 추가</title>
+    <script>
+        function validateForm() {
+            const userName = document.getElementById('user_name').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const userNameError = document.getElementById('user_name_error');
+
+            userNameError.textContent = ''; // Clear previous error
+
+            if (userName.length < 4) {
+                userNameError.textContent = '너무 짧습니다';
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return false;
+            }
+
+            const confirmation = `유저 이름: ${userName}\n비밀번호: ${password}\n\n이대로 등록하시겠습니까?`;
+            return confirm(confirmation);
+        }
+    </script>
 </head>
 <body>
     <h4>운영자 추가</h4>
-    <form>
-        <label for="email">이메일:</label><br>
-        <input type="email" id="email" name="email"><br>
+    <form action="/actions/register" method="post" onsubmit="return validateForm()">
+        <label for="user_name">유저 이름:</label><br>
+        <input type="text" id="user_name" name="user_name" required><span id="user_name_error" style="color: red;"></span><br>
         <label for="password">비밀번호:</label><br>
-        <input type="password" id="password" name="password"><br>
+        <input type="password" id="password" name="password" required><br>
         <label for="confirm_password">비밀번호 확인:</label><br>
-        <input type="password" id="confirm_password" name="confirm_password"><br><br>
-        <button type="submit">확인</button>
-        <button type="button">취소</button>
+        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+        <button type="submit">등록</button>
+        <button type="button" onclick="window.history.back()">취소</button>
     </form>
 </body>
 </html>

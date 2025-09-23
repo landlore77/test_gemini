@@ -18,12 +18,15 @@ func InitRoutes(e *echo.Echo) {
 		{Method: "GET", Path: "/login", Handler: requests.LoginHandler},
 		{Method: "GET", Path: "/register", Handler: requests.RegisterHandler},
 		{Method: "GET", Path: "/admin_list", Handler: requests.AdminListHandler},
+		{Method: "POST", Path: "/actions/register", Handler: requests.RegisterActionHandler},
 	}
 
 	for _, route := range routes {
 		switch route.Method {
 		case "GET":
 			e.GET(route.Path, route.Handler)
+		case "POST":
+			e.POST(route.Path, route.Handler)
 		}
 	}
 }
