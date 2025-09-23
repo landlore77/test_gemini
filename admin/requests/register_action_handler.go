@@ -46,5 +46,5 @@ func RegisterActionHandler(c echo.Context) error {
 		return c.String(http.StatusInternalServerError, "관리자 등록 오류")
 	}
 
-	return c.String(http.StatusOK, "등록 성공")
+	return c.Redirect(http.StatusSeeOther, "/admin_list")
 }

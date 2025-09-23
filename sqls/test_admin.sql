@@ -9,5 +9,6 @@ CREATE TABLE admin_auth (
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_ip VARCHAR(15),
     last_login INT DEFAULT 0,
-    INDEX (user_name)
+    INDEX (user_name),
+    INDEX (create_time)
 );

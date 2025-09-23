@@ -57,7 +57,7 @@ func AdminListHandler(c echo.Context) error {
 		totalPages = 1
 	}
 
-	rows, err := db.Query("SELECT id, group_id, user_name, description, last_login, last_ip FROM admin_auth ORDER BY id DESC LIMIT ? OFFSET ?", limit, offset)
+	rows, err := db.Query("SELECT id, group_id, user_name, description, last_login, last_ip FROM admin_auth ORDER BY create_time DESC LIMIT ? OFFSET ?", limit, offset)
 	if err != nil {
 		c.Logger().Errorf("Error querying admins: %v", err)
 		return c.String(http.StatusInternalServerError, "Error querying admins")
