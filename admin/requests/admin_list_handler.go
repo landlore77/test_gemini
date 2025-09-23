@@ -1,9 +1,9 @@
 package requests
 
 import (
-	"database/sql"
 	"net/http"
 	"strconv"
+	"test2/utils"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -28,7 +28,7 @@ type AdminListPageData struct {
 }
 
 func AdminListHandler(c echo.Context) error {
-	db, err := sql.Open("mysql", "test1:test1@tcp(127.0.0.1:3306)/test_admin")
+	db, err := utils.OpenDB()
 	if err != nil {
 		c.Logger().Errorf("Error opening database: %v", err)
 		return c.String(http.StatusInternalServerError, "Error connecting to database")

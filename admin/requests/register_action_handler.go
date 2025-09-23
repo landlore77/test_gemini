@@ -1,9 +1,9 @@
 package requests
 
 import (
-	"database/sql"
 	"fmt"
 	"net/http"
+	"test2/utils"
 
 	"github.com/labstack/echo/v4"
 	_ "github.com/go-sql-driver/mysql"
@@ -26,7 +26,7 @@ func RegisterActionHandler(c echo.Context) error {
 
 	clientIP := c.RealIP()
 
-	db, err := sql.Open("mysql", "test1:test1@tcp(127.0.0.1:3306)/test_admin")
+	db, err := utils.OpenDB()
 	if err != nil {
 		c.Logger().Errorf("Error opening database: %v", err)
 		return c.String(http.StatusInternalServerError, "데이터베이스 연결 오류")

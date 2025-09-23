@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"io"
 	"test2/router"
+	"test2/utils/config"
 
 	"github.com/labstack/echo/v4"
 )
@@ -17,6 +18,8 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 }
 
 func main() {
+	config.LoadConfig("config/config.yaml")
+
 	e := echo.New()
 
 	t := &Template{
