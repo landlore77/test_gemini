@@ -16,6 +16,7 @@ func InitRoutes(e *echo.Echo) {
 	routes := []Route{
 		{Method: "GET", Path: "/", Handler: requests.HomeHandler},
 		{Method: "GET", Path: "/login", Handler: requests.LoginHandler},
+		{Method: "GET", Path: "/register", Handler: requests.RegisterHandler},
 	}
 
 	for _, route := range routes {
