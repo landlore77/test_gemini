@@ -2,6 +2,7 @@ package requests
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -43,7 +44,7 @@ func RegisterActionHandler(c echo.Context) error {
 	_, err = stmt.Exec(-1, userName, "신규유저", string(hashedPassword), time.Now().Unix(), clientIP, 0)
 	if err != nil {
 		c.Logger().Errorf("Error inserting admin: %v", err)
-		return c.String(http.StatusInternalServerError, "관리자 등록 오류")
+		return c.String(http.StatusInternalServerError, fmt.Sprintf("관리자 등록 오류: %v", err))
 	}
 
 	return c.Redirect(http.StatusSeeOther, "/admin_list")
