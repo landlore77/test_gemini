@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/labstack/echo/v4"
 	_ "github.com/go-sql-driver/mysql"
@@ -34,14 +33,14 @@ func RegisterActionHandler(c echo.Context) error {
 	}
 	defer db.Close()
 
-	stmt, err := db.Prepare("INSERT INTO admin_auth (group_id, user_name, description, password, create_time, last_ip, last_login) VALUES (?, ?, ?, ?, ?, ?, ?)")
+	stmt, err := db.Prepare("INSERT INTO admin_auth (group_id, user_name, description, password, last_ip, last_login) VALUES (?, ?, ?, ?, ?, ?)")
 	if err != nil {
 		c.Logger().Errorf("Error preparing statement: %v", err)
 		return c.String(http.StatusInternalServerError, "데이터베이스 준비 오류")
 	}
 	defer stmt.Close()
 
-	_, err = stmt.Exec(-1, userName, "신규유저", string(hashedPassword), time.Now().Unix(), clientIP, 0)
+	_, err = stmt.Exec(-1, userName, "신규유저", string(hashedPassword), clientIP, 0)
 	if err != nil {
 		c.Logger().Errorf("Error inserting admin: %v", err)
 		return c.String(http.StatusInternalServerError, fmt.Sprintf("관리자 등록 오류: %v", err))
