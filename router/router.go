@@ -17,6 +17,7 @@ func InitRoutes(e *echo.Echo) {
 		{Method: "GET", Path: "/", Handler: requests.HomeHandler},
 		{Method: "GET", Path: "/login", Handler: requests.LoginHandler},
 		{Method: "GET", Path: "/register", Handler: requests.RegisterHandler},
+		{Method: "GET", Path: "/admin_list", Handler: requests.AdminListHandler},
 	}
 
 	for _, route := range routes {

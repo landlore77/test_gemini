@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>어드민 관리 페이지</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        .pagination button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h4>어드민 관리 페이지</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>그룹 ID</th>
+                <th>유저 이름</th>
+                <th>설명</th>
+                <th>마지막 로그인</th>
+                <th>마지막 IP</th>
+                <th>작업</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Admins}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.GroupID}}</td>
+                <td>{{.UserName}}</td>
+                <td>{{.Description}}</td>
+                <td>{{.LastLogin}}</td>
+                <td>{{.LastIP}}</td>
+                <td><button onclick="alert('{{.UserName}}삭제');">삭제</button></td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="7">데이터가 없습니다.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+    <div class="pagination">
+        {{if gt .CurrentPage 1}}
+            <button onclick="window.location.href='/admin_list?page={{.PrevPage}}'">이전</button>
+        {{end}}
+        <span>페이지 {{.CurrentPage}} / {{.TotalPages}}</span>
+        {{if lt .CurrentPage .TotalPages}}
+            <button onclick="window.location.href='/admin_list?page={{.NextPage}}'">다음</button>
+        {{end}}
+    </div>
+    <button onclick="window.location.href='/register'">생성</button>
+</body>
+</html>
