@@ -12,4 +12,5 @@ func InitRoutes(e *echo.Echo) {
 	e.GET("/register", requests.RegisterHandler)
 	e.GET("/admin_list", requests.AdminListHandler)
 	e.POST("/actions/register", requests.RegisterActionHandler)
+	e.POST("/actions/login", requests.LoginActionHandler)
 }
