@@ -25,7 +25,14 @@ func main() {
 
 	e := echo.New()
 
-	e.Use(session.Middleware(sessions.NewCookieStore([]byte("secret"))))
+	store := sessions.NewCookieStore([]byte("secret"))
+	store.Options = &sessions.Options{
+		Path:     "/",
+		HttpOnly: true,
+		Secure:   false, // Set to true if using HTTPS
+		SameSite: http.SameSiteLaxMode,
+	}
+	e.Use(session.Middleware(store))
 
 	// Login check middleware
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
