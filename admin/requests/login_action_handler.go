@@ -6,6 +6,7 @@ import (
 
 	"test2/utils"
 
+	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
 	_ "github.com/go-sql-driver/mysql"
 	"golang.org/x/crypto/bcrypt"
@@ -37,6 +38,9 @@ func LoginActionHandler(c echo.Context) error {
 		return c.HTML(http.StatusOK, "<script>alert('로그인 실패하였습니다.'); window.location.href='/login';</script>")
 	}
 
-	// Successful login, redirect to admin_list
+	// Successful login, store in session and redirect to admin_list
+	sess, _ := session.Get("session", c)
+	sess.Values["authenticated"] = true
+	sess.Save(c.Request(), c.Response())
 	return c.Redirect(http.StatusFound, "/admin_list")
 }
