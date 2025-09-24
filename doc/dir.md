@@ -1,0 +1,12 @@
+### 디렉토리 구조
+- `/` - main.go, go.mod 등 필수 파일만 포함
+- `/admin/` - API 정의
+- `/admin/requests/` - request 하나 하나 처리되는 파일 모음
+- `/config/` - config.yaml 등 yaml 파일 모음
+- `/pages/` - golang template 파일 모음
+- `/models/` - 각종 구조체 파일 모음 (mongo, redis, json 등에 사용될 model) 
+- `/utils/` - 유틸리티 함수
+- `/utils/config/` - yaml 처리 관련 유틸리티 함수
+- `/sqls/` - sql 파일 모음
+- `/router/` - routing 파일 모음
+- `/gemini_tasks/` - gemini 작업용 파일 모음
