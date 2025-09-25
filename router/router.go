@@ -14,4 +14,8 @@ func InitRoutes(e *echo.Echo) {
 	e.POST("/actions/register", requests.RegisterActionHandler)
 	e.POST("/actions/login", requests.LoginActionHandler)
 	e.POST("/actions/logout", requests.LogoutActionHandler)
+
+	e.GET("/event/pass", requests.EventPassHandler)
+	e.POST("/actions/event_pass_add", requests.EventPassAddActionHandler)
+	e.GET("/actions/event_pass_delete", requests.EventPassDeleteActionHandler)
 }

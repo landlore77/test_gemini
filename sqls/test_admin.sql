@@ -12,3 +12,13 @@ CREATE TABLE admin_auth (
     INDEX (user_name),
     INDEX (create_time)
 );
+
+DROP TABLE IF EXISTS event_pass;
+
+CREATE TABLE event_pass (
+    ID VARCHAR(8) PRIMARY KEY,
+    GROUP_ID VARCHAR(20),
+    CODE VARCHAR(10),
+    START_DATE INT,
+    END_DATE INT
+);
