@@ -3,70 +3,130 @@
 <head>
     <title>출석보상 이벤트</title>
     <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h4 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px;
             text-align: left;
+            vertical-align: middle;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto 1fr;
+            gap: 15px 20px;
+            align-items: center;
+        }
+        .form-grid label {
+            font-weight: bold;
+        }
+        .form-grid input, .form-grid select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .add-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
-<h4>출석보상 패스 이벤트 리스트</h4>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>GROUP ID</th>
-            <th>CODE</th>
-            <th>시작일시</th>
-            <th>종료일시</th>
-            <th>작업</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{range .Events}}
-        <tr>
-            <td>{{.ID}}</td>
-            <td>{{.GroupID}}</td>
-            <td>{{.Code}}</td>
-            <td>{{.StartDate}}</td>
-            <td>{{.EndDate}}</td>
-            <td><button onclick="deleteEvent('{{.ID}}')">삭제</button></td>
-        </tr>
-    {{end}}
-    </tbody>
-</table>
+<div class="container">
+    <h4>출석보상 패스 이벤트 리스트</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>시작일시</th>
+                <th>종료일시</th>
+                <th>그룹ID</th>
+                <th>CODE</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{range .Events}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.StartDate}}</td>
+                <td>{{.EndDate}}</td>
+                <td>{{.GroupID}}</td>
+                <td>{{.Code}}</td>
+                <td><button class="delete-btn" onclick="deleteEvent('{{.ID}}')">삭제</button></td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+</div>
 
-<hr>
+<div class="container">
+    <h4>출석보상패스 이벤트 추가</h4>
+    <form action="/actions/event_pass_add" method="post">
+        <div class="form-grid">
+            <label for="group_id">그룹ID</label>
+            <select id="group_id" name="group_id">
+                <option value="GROUP1">PASS1(루비)</option>
+                <option value="GROUP2">PASS2(캐릭터1)</option>
+                <option value="GROUP3">PASS3(캐릭터2)</option>
+            </select>
 
-<h4>출석보상패스 이벤트 추가</h4>
-<form action="/actions/event_pass_add" method="post">
-    <label for="group_id">GROUP ID:</label>
-    <select id="group_id" name="group_id">
-        <option value="GROUP1">PASS1(루비)</option>
-        <option value="GROUP2">PASS2(캐릭터1)</option>
-        <option value="GROUP3">PASS3(캐릭터2)</option>
-    </select>
-    <br><br>
-    <label for="code">CODE:</label>
-    <input type="text" id="code" name="code" required>
-    <br><br>
-    <label for="start_date">시작일시 (YYYY-MM-DD HH:mm:ss):</label>
-    <input type="text" id="start_date" name="start_date" required>
-    <br><br>
-    <label for="end_date">종료일시 (YYYY-MM-DD HH:mm:ss):</label>
-    <input type="text" id="end_date" name="end_date" required>
-    <br><br>
-    <button type="submit">추가</button>
-</form>
+            <label for="code">CODE</label>
+            <input type="text" id="code" name="code" required>
+
+            <label for="start_date">시작시간</label>
+            <input type="text" id="start_date" name="start_date" placeholder="YYYY-MM-DD HH:mm:ss" required>
+
+            <label for="end_date">종료시간</label>
+            <input type="text" id="end_date" name="end_date" placeholder="YYYY-MM-DD HH:mm:ss" required>
+        </div>
+        <div class="form-footer">
+            <button type="submit" class="add-btn">추가</button>
+        </div>
+    </form>
+</div>
 
 <script>
     function deleteEvent(id) {
